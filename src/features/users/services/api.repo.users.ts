@@ -1,18 +1,36 @@
 import { serverUrl } from '../../../config';
-import { UserStructure } from '../models/user';
+import { loginPayload } from '../models/login.payload';
+import { LoginUser, UserStructure } from '../models/user';
 
 export class ApiRepoUserStructures {
-  apiUrl = serverUrl + '/Users';
+  apiUrl = serverUrl + '/users';
 
-  async getUsers(): Promise<UserStructure[]> {
-    const response = await fetch(this.apiUrl);
+  async getUsers(page: string): Promise<UserStructure[]> {
+    const response = await fetch(this.apiUrl, {
+      method: 'GET',
+      headers:{'get': page}
+    });
     if (!response.ok)
       throw new Error(response.status + ' ' + response.statusText);
     return response.json();
   }
 
-  async createUsers(newUserStructure: Partial<UserStructure>): Promise<UserStructure> {
-    const response = await fetch(this.apiUrl, {
+  async loginUser(loginUser: LoginUser): Promise<loginPayload>{
+    const response = await fetch(this.apiUrl + '/login', {
+      method: 'POST',
+      body: JSON.stringify(loginUser),
+      headers:{
+        'Content-Type': 'application/json'
+      }
+    });
+    if (!response.ok)
+    throw new Error(response.status + ' ' + response.statusText);
+  return response.json();
+
+  }
+
+  async registerUser(newUserStructure: Partial<UserStructure>): Promise<UserStructure> {
+    const response = await fetch(this.apiUrl + '/register', {
       method: 'POST',
       body: JSON.stringify(newUserStructure),
       headers: {
@@ -24,13 +42,13 @@ export class ApiRepoUserStructures {
     return response.json();
   }
 
-  async updateUsers(id: UserStructure['id'], updatedUserStructure: Partial<UserStructure>): Promise<UserStructure> {
-    const finalUrl = `${this.apiUrl}/${id}`;
+  async updateUser(id: UserStructure['id'], updatedUserStructure: Partial<UserStructure>, token: string): Promise<UserStructure> {
+    const finalUrl = `${this.apiUrl}/update/${id}`;
     const response = await fetch(finalUrl, {
       method: 'PATCH',
       body: JSON.stringify(updatedUserStructure),
       headers: {
-        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
       },
     });
     if (!response.ok)
