@@ -14,18 +14,18 @@ export const loadUsersThunk = createAsyncThunk<UserStructure[],
   }
 );
 
-type ParamsRegister = {
-  repo: ApiRepoUserStructures;
-  newUser: Partial<UserStructure>;
-};
+// type ParamsRegister = {
+//   repo: ApiRepoUserStructures;
+//   newUser: Partial<UserStructure>;
+// };
 
-export const registerUserThunk = createAsyncThunk<UserStructure, ParamsRegister>(
-  'user/register',
-  async ({ repo, newUser }) => {
-    const finalUser = await repo.registerUser(newUser);
-    return finalUser;
-  }
-);
+// export const registerUserThunk = createAsyncThunk<UserStructure, ParamsRegister>(
+//   'user/register',
+//   async ({ repo, newUser }) => {
+//     const finalUser = await repo.registerUser(newUser);
+//     return finalUser;
+//   }
+// );
 
 export const loginUserThunk = createAsyncThunk<loginPayload,
 {
@@ -36,15 +36,15 @@ repo: ApiRepoUserStructures
   }
 );
 
-export const updateTaskThunk = createAsyncThunk<
+export const updateUserThunk = createAsyncThunk<
   UserStructure,
   {
     repo: ApiRepoUserStructures;
     id: UserStructure['id'];
-    updatedTask: Partial<UserStructure>;
+    updatedUser: Partial<UserStructure>;
     token: string;
   }
->('tasks/update', async ({ repo, id, updatedTask, token }) => {
-  const finalTask = await repo.updateUser(id, updatedTask,token);
-  return finalTask;
+>('users/update', async ({ repo, id, updatedUser, token }) => {
+  const finalUser = await repo.updateUser(id, updatedUser,token);
+  return finalUser;
 });
