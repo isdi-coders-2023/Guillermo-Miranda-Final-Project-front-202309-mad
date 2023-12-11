@@ -1,8 +1,11 @@
+import { AppRoutes } from "../../features/routes/app.routes"
 
 
 function App() {
   return (
-    <>hola</>
+    <>
+    <AppRoutes></AppRoutes>
+    </>
   )
 }
 
