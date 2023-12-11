@@ -7,9 +7,8 @@ import { ApiRepoUserStructures } from '../services/api.repo.users';
 export const loadUsersThunk = createAsyncThunk<UserStructure[], 
 {
   repo: ApiRepoUserStructures, 
-  page: string
-}>('users/load',async ({repo, page}) => {
-    const users = await repo.getUsers(page);
+}>('users/load',async ({repo}) => {
+    const users = await repo.getUsers();
     return users;
   }
 );

@@ -5,11 +5,8 @@ import { LoginUser, UserStructure } from '../models/user';
 export class ApiRepoUserStructures {
   apiUrl = serverUrl + '/users';
 
-  async getUsers(page: string): Promise<UserStructure[]> {
-    const response = await fetch(this.apiUrl, {
-      method: 'GET',
-      headers:{'get': page}
-    });
+  async getUsers(): Promise<UserStructure[]> {
+    const response = await fetch(this.apiUrl);
     if (!response.ok)
       throw new Error(response.status + ' ' + response.statusText);
     return response.json();

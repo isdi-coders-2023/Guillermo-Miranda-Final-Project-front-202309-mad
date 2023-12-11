@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../core/store/store";
 import { LoginUser, UserStructure } from "../models/user";
-import { loadUsersThunk, loginUserThunk, updateUserThunk } from "../slices/user.thunk";
+import { loginUserThunk, updateUserThunk } from "../slices/user.thunk";
 import { ApiRepoUserStructures } from "../services/api.repo.users";
 
 export function useUsers() {
@@ -22,14 +22,9 @@ export function useUsers() {
     dispatch(updateUserThunk({repo, token, id, updatedUser}));
   }
 
-  const load = (page:string) =>{
-    dispatch(loadUsersThunk({repo, page}))
-  }
-
   return{
     register,
     login,
-    update,
-    load
+    update
   }
 }

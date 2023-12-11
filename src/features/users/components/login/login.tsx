@@ -1,12 +1,13 @@
 import { SyntheticEvent, useState } from "react";
 import { useUsers } from "../../hooks/users.hook"
 import { LoginUser } from "../../models/user";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export function Login (){
 
   const [hasLogged, setHasLogged] = useState(false);
   const {login} = useUsers()
+  const navigate = useNavigate();
 
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
@@ -20,6 +21,7 @@ export function Login (){
     
     login(loginData);
     setHasLogged(true);
+    navigate('/home')
 
   };
 
@@ -31,20 +33,19 @@ export function Login (){
         className="register-form"
         aria-label="form"
       >
-        <label>Email</label>
+        <label>Email: </label>
         <input type="email" name="email" placeholder="email" required />
-        <label>Password</label>
+        <label>Contraseña: </label>
         <input type="password" name="passwd" placeholder="contraseña" required />
-        <div className="signup-button">
-            <button type="submit">Apuntate</button>
-        </div>
-        <div className="cancel-button">
-          <Link to={'/home/'}>
-            <button type="button">Listo</button>
-          </Link>
-        </div>
+        <button type="submit">listo</button>
+          
+        {hasLogged && (
+        <Link to={'/home/'}>
+          <button type="button">vamos a tu espacio</button>
+        </Link> 
+        )}
       </form>
     )}
-    </section>
+  </section>
   )
 }

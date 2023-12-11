@@ -10,7 +10,7 @@ export function AppRoutes() {
       <Suspense>
         <Routes>
           <Route 
-            path="/session" 
+            path="/" 
             element={<SessionPage></SessionPage>}
           ></Route>
           <Route

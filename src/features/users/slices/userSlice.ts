@@ -3,7 +3,7 @@ import { LoginUser } from '../models/user';
 import { loginPayload } from '../models/login.payload';
 import { loginUserThunk } from './user.thunk';
 
-type LoginState = 'idle' | 'logging' | 'error'
+type LoginState = 'idle' | 'logging' | 'error';
 
 type UserState = {
   loggedUser: LoginUser | null;
