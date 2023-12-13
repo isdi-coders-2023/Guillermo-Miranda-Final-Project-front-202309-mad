@@ -9,11 +9,11 @@ describe('Given userReducer', () => {
     test('Then the new state will be returned ', () => {
       const action = {
         type: 'login/fulfilled',
-        payload: { user: 'test', token: 'token' },
+        payload: { user: {id: 'Test'}, token: 'token' },
       };
       const state: UserState = {} as unknown as UserState;
       const result = usersReducer(state, action);
-      expect(result.loggedUser).toBe('test');
+      expect(result.loggedUser?.id).toBe('Test');
       expect(result.token).toBe('token');
 
     })

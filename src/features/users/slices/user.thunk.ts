@@ -7,7 +7,7 @@ import { ApiRepoUserStructures } from '../services/api.repo.users';
 export const loadUsersThunk = createAsyncThunk<UserStructure[], 
 {
   repo: ApiRepoUserStructures, 
-}>('users/load',async ({repo}) => {
+}>('load',async ({repo}) => {
     const users = await repo.getUsers();
     return users;
   }
@@ -30,7 +30,7 @@ export const loginUserThunk = createAsyncThunk<loginPayload,
 {
 loginUser: LoginUser,
 repo: ApiRepoUserStructures
-}>('user/login', async({loginUser, repo}) => {
+}>('login', async({loginUser, repo}) => {
     return await repo.loginUser(loginUser);
   }
 );
@@ -43,7 +43,7 @@ export const updateUserThunk = createAsyncThunk<
     updatedUser: Partial<UserStructure>;
     token: string;
   }
->('users/update', async ({ repo, id, updatedUser, token }) => {
+>('update', async ({ repo, id, updatedUser, token }) => {
   const finalUser = await repo.updateUser(id, updatedUser,token);
   return finalUser;
 });

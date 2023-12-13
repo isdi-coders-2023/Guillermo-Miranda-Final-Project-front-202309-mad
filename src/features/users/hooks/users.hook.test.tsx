@@ -53,7 +53,7 @@ describe('Given useUsers hooks', () => {
 
   describe('When we click button update', () => {
     test('Then the dispacht should have been called', async () => {
-      await userEvent.click(elements[1]);
+      await userEvent.click(elements[0]);
       expect(useDispatch()).toHaveBeenCalled();
     });
   });
@@ -62,7 +62,7 @@ describe('Given useUsers hooks', () => {
     test('Then the dispacht should have been called', async () => {
       ApiRepoUserStructures.prototype.registerUser = jest.fn();
 
-      await userEvent.click(elements[3]);
+      await userEvent.click(elements[2]);
       expect(useDispatch()).toHaveBeenCalled();
     });
   });
