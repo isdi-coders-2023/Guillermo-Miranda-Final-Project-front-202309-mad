@@ -44,7 +44,7 @@ describe('Given UsersRepo class', () => {
     test('Then method login should...', async () => {
       const loginUser: LoginUser = {
         email: 'test@test.com',
-        passwd: 'passwdtest',
+        passwd: 'pwtest',
       };
       const expectedUrl = 'http://localhost:2800/users/login';
 
@@ -105,7 +105,7 @@ describe('Given UsersRepo class', () => {
     test('Then method login should throw an error', async () => {
       const loginUser: LoginUser = {
         email: 'test@test.com',
-        passwd: 'passwdtest',
+        passwd: 'pwtest',
       };
       expect(repo.loginUser(loginUser)).rejects.toThrow();
     });
