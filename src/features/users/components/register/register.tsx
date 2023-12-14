@@ -24,7 +24,8 @@ export function Register() {
     } as Partial<UserStructure>;
     register(data);
     setHasRegister(true);
-    navigate('/home');
+    navigate('/');
+
   };
 
   return (

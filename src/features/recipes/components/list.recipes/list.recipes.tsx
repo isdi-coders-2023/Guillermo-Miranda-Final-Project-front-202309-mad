@@ -11,7 +11,7 @@ export function List({recipeList}: Props) {
 
   useEffect(() => {
     getAllRecipes();
-  }, [getAllRecipes]);
+  },[]);
 
   return (
     <>
