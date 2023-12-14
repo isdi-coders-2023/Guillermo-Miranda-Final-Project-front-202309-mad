@@ -3,7 +3,7 @@ import { render, screen } from '@testing-library/react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import { AppRoutes } from './app.routes';
 import { Provider } from 'react-redux';
-import { store } from '../../core/store/store';
+import { store } from '../core/store/store';
 
 
 describe('AppRoutes', () => {

@@ -8,7 +8,7 @@ export function useUsers() {
   const { token } = useSelector((state: RootState) => state.userState);
 
   const dispatch = useDispatch<AppDispatch>();
-  const repo = new ApiRepoUserStructures
+  const repo = new ApiRepoUserStructures();
 
   const register = (newUser: Partial<UserStructure>) => {
     repo.registerUser(newUser);

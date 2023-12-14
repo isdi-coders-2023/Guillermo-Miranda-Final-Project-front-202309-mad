@@ -1,11 +1,12 @@
 import { SyntheticEvent, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useUsers } from '../../hooks/users.hook';
 import { UserStructure } from '../../models/user';
 
 export function Register() {
   const [hasRegister, setHasRegister] = useState(false);
   const { register } = useUsers();
+  const navigate = useNavigate();
 
   const handleSubmit = (event: SyntheticEvent) => {
     event.preventDefault();
@@ -23,6 +24,7 @@ export function Register() {
     } as Partial<UserStructure>;
     register(data);
     setHasRegister(true);
+    navigate('/home');
   };
 
   return (
@@ -48,20 +50,13 @@ export function Register() {
           <div className="signup-button">
             <button type="submit">Apuntate</button>
           </div>
-          <div className="cancel-button">
-            <Link to={'/home/'}>
-              <button type="button">Listo</button>
-            </Link>
-          </div>
         </form>
       )}
-      {hasRegister && (
         <div>
-          <Link to={'/session/'}>
+          <Link to={'/'}>
             <button type="button">Volver</button>
           </Link>
         </div>
-      )}
     </>
   );
 }

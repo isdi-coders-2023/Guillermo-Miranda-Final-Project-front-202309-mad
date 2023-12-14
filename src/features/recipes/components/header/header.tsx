@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { RootState } from "../../../core/store/store"
+import { RootState } from "../../../../core/store/store"
 
 export function Header (){
   const {loggedUser}=useSelector((state:RootState)=>state.userState)

@@ -1,11 +1,14 @@
-import { SyntheticEvent, useState } from "react";
+import { SyntheticEvent, useEffect } from "react";
 import { useUsers } from "../../hooks/users.hook"
 import { LoginUser } from "../../models/user";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../core/store/store"
 
 export function Login (){
 
-  const [hasLogged, setHasLogged] = useState(false);
+  const { loggedUser }=useSelector((state:RootState)=>state.userState)
+
   const {login} = useUsers()
   const navigate = useNavigate();
 
@@ -18,16 +21,17 @@ export function Login (){
       email: formData.get('email')?.toString() as string,
       passwd: formData.get('passwd')?.toString() as string
     };
-    
     login(loginData);
-    setHasLogged(true);
-    navigate('/home')
-
   };
+
+  useEffect(()=>{
+    if(loggedUser){
+      navigate('/home');
+    }
+  }, [loggedUser])
 
   return(
     <section>
-    {!hasLogged && (
       <form
         onSubmit={handleSubmit}
         className="register-form"
@@ -39,13 +43,7 @@ export function Login (){
         <input type="password" name="passwd" placeholder="contraseña" required />
         <button type="submit">listo</button>
           
-        {hasLogged && (
-        <Link to={'/home/'}>
-          <button type="button">vamos a tu espacio</button>
-        </Link> 
-        )}
       </form>
-    )}
   </section>
   )
 }

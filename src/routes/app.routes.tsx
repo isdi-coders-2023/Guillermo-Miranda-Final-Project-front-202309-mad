@@ -1,8 +1,8 @@
 import { Suspense, lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 
-const RegisterPage = lazy(() => import('../../pages/register/register.page'));
-const SessionPage = lazy(() => import('../../pages/session.buttons/session.page'));
+const RegisterPage = lazy(() => import('../pages/register/register.page'));
+const SessionPage = lazy(() => import('../pages/session.buttons/session.page'));
 
 export function AppRoutes() {
   return (
