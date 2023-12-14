@@ -2,6 +2,8 @@ import { useDispatch } from "react-redux";
 import { AppDispatch } from "../../../core/store/store";
 import { ApiRepoRecipeStructures } from "../services/api.repo.recipes";
 import { loadRecipesThunk } from "../slices/recipes.thunk";
+import { recipeStructure } from "../models/recipe";
+import { OneRecipe } from "../slices/recipes.slice";
 
 export function useRecipes() {
 
@@ -12,5 +14,9 @@ export function useRecipes() {
     dispatch(loadRecipesThunk({repo}));
   }
 
-  return{ getAllRecipes }
+  const getOneRecipe = async (recipe: recipeStructure) => {
+    dispatch(OneRecipe(recipe));
+  };
+
+  return{ getAllRecipes, getOneRecipe }
 }

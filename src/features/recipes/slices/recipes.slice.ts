@@ -21,6 +21,13 @@ const recipesSlice = createSlice({
   name: 'recipes',
   initialState,
   reducers: {
+    OneRecipe: (
+      state: RecipesState,
+      { payload }: PayloadAction<recipeStructure | null>
+    ) => {
+      state.currentRecipe = payload;
+      return state;
+    },
   },
   extraReducers:(builder) => {
     builder.addCase(loadRecipesThunk.fulfilled, 
@@ -42,4 +49,4 @@ const recipesSlice = createSlice({
 });
 
 export default recipesSlice.reducer;
-export const ac = recipesSlice.actions;
+export const {OneRecipe} = recipesSlice.actions;

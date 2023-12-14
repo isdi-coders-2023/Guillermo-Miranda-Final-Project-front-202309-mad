@@ -3,6 +3,7 @@ import { Route, Routes } from 'react-router-dom';
 
 const RegisterPage = lazy(() => import('../pages/register/register.page'));
 const SessionPage = lazy(() => import('../pages/session.buttons/session.page'));
+const HomePage = lazy(()=> import ('../pages/home/home.page'))
 
 export function AppRoutes() {
   return (
@@ -17,7 +18,10 @@ export function AppRoutes() {
             path="/register"
             element={<RegisterPage></RegisterPage>}
           ></Route>
-          
+          <Route
+            path="/home"
+            element={<HomePage></HomePage>}
+          ></Route>
         </Routes>
       </Suspense>
     </main>
