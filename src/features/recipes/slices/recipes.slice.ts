@@ -1,6 +1,7 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { recipeStructure } from '../models/recipe';
-import { loadRecipesThunk } from './recipes.thunk';
+import { loadRecipesThunk, loadUserRecipesThunk } from './recipes.thunk';
+
 
 
 type statusRecipeState = 'idle' | 'logging' | 'error';
@@ -30,11 +31,18 @@ const recipesSlice = createSlice({
     },
   },
   extraReducers:(builder) => {
-    builder.addCase(loadRecipesThunk.fulfilled, 
-      (state: RecipesState, {payload}: PayloadAction<recipeStructure[]>) => {
-        state.recipes = payload
-      
-      });
+      builder.addCase(loadUserRecipesThunk.fulfilled, 
+        (state: RecipesState, {payload}: PayloadAction<recipeStructure[]>) => {
+       
+            state.recipes = payload
+        
+        });
+        
+      builder.addCase(loadRecipesThunk.fulfilled, 
+        (state: RecipesState, {payload}: PayloadAction<recipeStructure[]>) => {
+          state.recipes = payload
+        
+        });
 
       builder.addCase(loadRecipesThunk.pending, 
         (state:RecipesState) =>{
@@ -45,6 +53,7 @@ const recipesSlice = createSlice({
         (state:RecipesState) =>{
         state.statusRecipeState = 'error'
         });
+
       }
 });
 

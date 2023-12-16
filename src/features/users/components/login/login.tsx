@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../core/store/store"
 
+import './login.scss'
+
 export function Login (){
 
   const { loggedUser }=useSelector((state:RootState)=>state.userState)
@@ -31,10 +33,10 @@ export function Login (){
   }, [loggedUser])
 
   return(
-    <section>
+    <section className="login">
       <form
         onSubmit={handleSubmit}
-        className="register-form"
+        className="login-form"
         aria-label="form"
       >
         <label>Email: </label>

@@ -17,7 +17,7 @@ export const Card = ({recipe}: Props) => {
             <p >{recipe.chef.userName}</p>
           </div>
           <div >
-            <img src= {recipe.picture.cloudinaryURL}/> receta
+            <img src= {recipe.picture.cloudinaryURL}/> 
           </div>
       </div>
     </div>

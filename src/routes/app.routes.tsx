@@ -3,7 +3,8 @@ import { Route, Routes } from 'react-router-dom';
 
 const RegisterPage = lazy(() => import('../pages/register/register.page'));
 const SessionPage = lazy(() => import('../pages/session.buttons/session.page'));
-const HomePage = lazy(()=> import ('../pages/home/home.page'))
+const HomePage = lazy(()=> import ('../pages/home/home.page'));
+const MyRecipesPage = lazy(()=> import ('../pages/my.recipes.page/my.recipes.page'))
 
 export function AppRoutes() {
   return (
@@ -21,6 +22,10 @@ export function AppRoutes() {
           <Route
             path="/home"
             element={<HomePage></HomePage>}
+          ></Route>
+          <Route
+            path="/myrecipes"
+            element={<MyRecipesPage></MyRecipesPage>}
           ></Route>
         </Routes>
       </Suspense>

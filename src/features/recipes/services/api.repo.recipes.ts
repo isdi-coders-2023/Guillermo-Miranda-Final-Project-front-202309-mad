@@ -12,4 +12,12 @@ export class ApiRepoRecipeStructures {
     return response.json();
   }
 
+  async getUserRecipes(userID: string): Promise<recipeStructure[]> {
+
+    const response = await fetch(this.apiUrl + `/my-recipes/${userID}`);
+    if (!response.ok)
+      throw new Error(response.status + ' ' + response.statusText)
+    return response.json();
+  }
+
 }
