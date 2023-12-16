@@ -1,6 +1,6 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { recipeStructure } from '../models/recipe';
-import { createRecipeThunk, loadRecipesThunk, loadUserRecipesThunk } from './recipes.thunk';
+import { createRecipeThunk, deleteRecipeThunk, loadRecipesThunk, loadUserRecipesThunk } from './recipes.thunk';
 
 
 
@@ -65,6 +65,13 @@ const recipesSlice = createSlice({
         (state: RecipesState, {payload}: PayloadAction<recipeStructure>) => ({
           ...state , recipes: [...state.recipes, payload]
           })
+        );
+
+      builder.addCase(deleteRecipeThunk.fulfilled, 
+        (state: RecipesState, {payload}: PayloadAction<recipeStructure['id']>) => {
+          state.recipes.splice(state.recipes.findIndex((item)=>item.id === payload),1)
+          return state
+          }
         );
 
       }

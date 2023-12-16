@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { recipeStructure } from "../../models/recipe";
+import { useRecipes } from "../../hooks/recipes.hook";
 
 
 type Props = {
@@ -8,18 +9,14 @@ type Props = {
 
 export const CardMyRecipes = ({recipe}: Props) => {
 
+  const { deleteRecipe } = useRecipes();
+
+  const handleDelete = () => {
+    deleteRecipe(recipe.id);
+  }
+
   return (
     <div>
-      <Link to={'/form'}>
-          <img 
-            src="https://res.cloudinary.com/dnhrt9kxh/image/upload/v1702753986/x7w4zk7wskuzyi9kap8x.png" 
-            alt="add-card" 
-            width={50}
-            height={50}
-            role='button'
-            
-              />
-        </Link>
         <div className="card-info-container">
             <div >
               <p >{recipe.recipeName}</p>
@@ -47,7 +44,7 @@ export const CardMyRecipes = ({recipe}: Props) => {
                 width={50}
                 height={50}
                 role='button'
-                // onClick={}
+                onClick={handleDelete}
               />
             </div>
         </div>

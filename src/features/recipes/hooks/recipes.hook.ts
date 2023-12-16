@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../core/store/store";
 import { ApiRepoRecipeStructures } from "../services/api.repo.recipes";
-import { createRecipeThunk, loadRecipesThunk, loadUserRecipesThunk } from "../slices/recipes.thunk";
+import { createRecipeThunk, deleteRecipeThunk, loadRecipesThunk, loadUserRecipesThunk } from "../slices/recipes.thunk";
 import { recipeStructure } from "../models/recipe";
 import { OneRecipe } from "../slices/recipes.slice";
 
@@ -28,5 +28,9 @@ export function useRecipes() {
     dispatch(createRecipeThunk({repo,newRecipe}));
   };
 
-  return{ getAllRecipes, getOneRecipe, getUserRecipes, createRecipe }
+  const deleteRecipe = async (id: recipeStructure['id']) => {
+    dispatch(deleteRecipeThunk({repo,id}));
+  };
+
+  return{ getAllRecipes, getOneRecipe, getUserRecipes, createRecipe, deleteRecipe }
 }

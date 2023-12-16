@@ -35,4 +35,16 @@ export class ApiRepoRecipeStructures {
     return response.json();
   }
 
+  async deleteRecipe(id: recipeStructure['id']): Promise<void> {
+    const finalUrl = `${this.apiUrl}/${id}`;
+    const response = await fetch(finalUrl, {
+      method: 'DELETE',
+      headers: {
+        Authorization: 'Bearer ' + this.token,
+      },
+    });
+    if (!response.ok)
+      throw new Error(response.status + ' ' + response.statusText);
+  }
+
 }

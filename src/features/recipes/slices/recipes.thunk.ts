@@ -25,10 +25,20 @@ export const loadUserRecipesThunk = createAsyncThunk<recipeStructure[],
 
 export const createRecipeThunk = createAsyncThunk<recipeStructure,
 {
-newRecipe: FormData,
-repo: ApiRepoRecipeStructures
+  newRecipe: FormData,
+  repo: ApiRepoRecipeStructures
 }>('create',async ({ repo, newRecipe }) => {
     const addRecipe = await repo.createRecipe(newRecipe);
     return addRecipe;
   }
 );
+
+export const deleteRecipeThunk = createAsyncThunk<recipeStructure['id'],
+{
+  repo: ApiRepoRecipeStructures;
+  id: recipeStructure['id'];
+}
+>('delete', async ({ repo, id }) => {
+  await repo.deleteRecipe(id);
+  return id;
+});
