@@ -1,10 +1,10 @@
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { recipeStructure } from '../models/recipe';
-import { loadRecipesThunk, loadUserRecipesThunk } from './recipes.thunk';
+import { createRecipeThunk, loadRecipesThunk, loadUserRecipesThunk } from './recipes.thunk';
 
 
 
-type statusRecipeState = 'idle' | 'logging' | 'error';
+type statusRecipeState = 'idle' | 'loading' | 'error';
 
 type RecipesState = {
   recipes: recipeStructure[];
@@ -33,26 +33,39 @@ const recipesSlice = createSlice({
   extraReducers:(builder) => {
       builder.addCase(loadUserRecipesThunk.fulfilled, 
         (state: RecipesState, {payload}: PayloadAction<recipeStructure[]>) => {
-       
-            state.recipes = payload
-        
+          state.recipes = payload
+        });
+
+      builder.addCase(loadUserRecipesThunk.pending, 
+        (state:RecipesState) =>{
+          state.statusRecipeState = 'loading'
+        });
+
+      builder.addCase(loadUserRecipesThunk.rejected, 
+        (state:RecipesState) =>{
+          state.statusRecipeState = 'error'
         });
         
       builder.addCase(loadRecipesThunk.fulfilled, 
         (state: RecipesState, {payload}: PayloadAction<recipeStructure[]>) => {
           state.recipes = payload
-        
         });
 
       builder.addCase(loadRecipesThunk.pending, 
         (state:RecipesState) =>{
-        state.statusRecipeState = 'logging'
+          state.statusRecipeState = 'loading'
         });
 
       builder.addCase(loadRecipesThunk.rejected, 
         (state:RecipesState) =>{
-        state.statusRecipeState = 'error'
+          state.statusRecipeState = 'error'
         });
+
+      builder.addCase(createRecipeThunk.fulfilled, 
+        (state: RecipesState, {payload}: PayloadAction<recipeStructure>) => ({
+          ...state , recipes: [...state.recipes, payload]
+          })
+        );
 
       }
 });

@@ -6,7 +6,9 @@ import { ListMyRecipes } from "../../features/recipes/components/list.my.recipes
 
 export default function MyRecipesPage() {
   
-  const { recipes, userID } = useSelector((state: RootState) => state.recipesState);
+  const { recipes } = useSelector((state: RootState) => state.recipesState);
+  const { loggedUser }=useSelector((state:RootState)=>state.userState)
+  const userID = loggedUser!.id
 
   return (
     <>

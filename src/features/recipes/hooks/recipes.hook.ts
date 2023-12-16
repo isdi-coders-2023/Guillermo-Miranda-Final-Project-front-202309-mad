@@ -1,15 +1,16 @@
-import { useDispatch } from "react-redux";
-import { AppDispatch } from "../../../core/store/store";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "../../../core/store/store";
 import { ApiRepoRecipeStructures } from "../services/api.repo.recipes";
-import { loadRecipesThunk, loadUserRecipesThunk } from "../slices/recipes.thunk";
+import { createRecipeThunk, loadRecipesThunk, loadUserRecipesThunk } from "../slices/recipes.thunk";
 import { recipeStructure } from "../models/recipe";
 import { OneRecipe } from "../slices/recipes.slice";
 
 
 export function useRecipes() {
 
+  const { token } = useSelector((state: RootState) => state.userState);
   const dispatch = useDispatch<AppDispatch>();
-  const repo = new ApiRepoRecipeStructures();
+  const repo = new ApiRepoRecipeStructures(token);
 
   const getAllRecipes = () => {
     dispatch(loadRecipesThunk({repo}));
@@ -23,5 +24,9 @@ export function useRecipes() {
     dispatch(OneRecipe(recipe));
   };
 
-  return{ getAllRecipes, getOneRecipe, getUserRecipes }
+  const createRecipe = async (newRecipe: FormData) => {
+    dispatch(createRecipeThunk({repo,newRecipe}));
+  };
+
+  return{ getAllRecipes, getOneRecipe, getUserRecipes, createRecipe }
 }

@@ -3,6 +3,7 @@ import { recipeStructure } from "../models/recipe";
 import { ApiRepoRecipeStructures } from "../services/api.repo.recipes";
 
 
+
 export const loadRecipesThunk = createAsyncThunk<recipeStructure[], 
 {
   repo: ApiRepoRecipeStructures, 
@@ -19,5 +20,15 @@ export const loadUserRecipesThunk = createAsyncThunk<recipeStructure[],
 }>('loadUser',async ({userID, repo}) => {
     const recipes = await repo.getUserRecipes(userID);
     return recipes;
+  }
+);
+
+export const createRecipeThunk = createAsyncThunk<recipeStructure,
+{
+newRecipe: FormData,
+repo: ApiRepoRecipeStructures
+}>('create',async ({ repo, newRecipe }) => {
+    const addRecipe = await repo.createRecipe(newRecipe);
+    return addRecipe;
   }
 );
