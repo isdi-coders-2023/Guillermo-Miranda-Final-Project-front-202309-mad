@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../../core/store/store";
 import { ApiRepoRecipeStructures } from "../services/api.repo.recipes";
-import { createRecipeThunk, deleteRecipeThunk, loadRecipesThunk, loadUserRecipesThunk } from "../slices/recipes.thunk";
+import { createRecipeThunk, deleteRecipeThunk, loadRecipesThunk, loadUserRecipesThunk, updateRecipeThunk } from "../slices/recipes.thunk";
 import { recipeStructure } from "../models/recipe";
 import { OneRecipe } from "../slices/recipes.slice";
 
@@ -32,5 +32,9 @@ export function useRecipes() {
     dispatch(deleteRecipeThunk({repo,id}));
   };
 
-  return{ getAllRecipes, getOneRecipe, getUserRecipes, createRecipe, deleteRecipe }
+  const updateRecipe = async (id: recipeStructure['id'], updatedRecipe: FormData) => {
+    dispatch(updateRecipeThunk({repo,id,updatedRecipe}));
+  };
+
+  return{ getAllRecipes, getOneRecipe, getUserRecipes, createRecipe, deleteRecipe, updateRecipe }
 }

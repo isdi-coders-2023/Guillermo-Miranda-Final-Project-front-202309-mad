@@ -45,4 +45,17 @@ export class ApiRepoRecipeStructures {
       throw new Error(response.status + ' ' + response.statusText);
   }
 
+  async updateRecipe(id: string, updatedRecipe: FormData): Promise<recipeStructure> {
+    const response = await fetch(this.apiUrl + `/update/${id}`, {
+      method: 'PATCH',
+      body: updatedRecipe,
+      headers: {
+        Authorization: 'Bearer ' + this.token,
+      },
+    });
+    if (!response.ok)
+      throw new Error(response.status + ' ' + response.statusText);
+    return response.json();
+  }
+
 }

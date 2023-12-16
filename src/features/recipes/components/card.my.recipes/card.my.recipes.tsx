@@ -21,10 +21,12 @@ export const CardMyRecipes = ({recipe}: Props) => {
               <p >{recipe.recipeName}</p>
             </div>
             <div >
-              <p >{recipe.chef.userName}</p>
+              <p >by {recipe.chef.userName}</p>
             </div>
             <div >
-              <img src= {recipe.picture.cloudinaryURL}/> 
+              <img src= {recipe.picture.cloudinaryURL}
+              width={200}
+              height={200}/> 
             </div>
             <div>
               <img 
