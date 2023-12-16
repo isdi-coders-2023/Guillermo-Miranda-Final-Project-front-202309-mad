@@ -22,8 +22,7 @@ export class ApiRepoRecipeStructures {
   }
 
   async createRecipe(newRecipe: FormData): Promise<recipeStructure> {
-    const url = this.apiUrl;
-    const response = await fetch(url, {
+    const response = await fetch(this.apiUrl + '/create', {
       method: 'POST',
       body: newRecipe,
       headers: {
@@ -36,8 +35,7 @@ export class ApiRepoRecipeStructures {
   }
 
   async deleteRecipe(id: recipeStructure['id']): Promise<void> {
-    const finalUrl = `${this.apiUrl}/${id}`;
-    const response = await fetch(finalUrl, {
+    const response = await fetch(this.apiUrl + `/delete/${id}`, {
       method: 'DELETE',
       headers: {
         Authorization: 'Bearer ' + this.token,

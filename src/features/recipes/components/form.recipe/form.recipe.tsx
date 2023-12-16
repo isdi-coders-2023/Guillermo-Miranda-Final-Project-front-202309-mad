@@ -7,43 +7,43 @@ export default function FormRecipe() {
   const { createRecipe } = useRecipes();
   // const [newIngredient, setNewIngredient] = useState(['']);
   
-  const handleSubmitRecipe = (event: SyntheticEvent) => {
+  const handleSubmitRecipe = async (event: SyntheticEvent) => {
     event.preventDefault();
     const form = event.target as HTMLFormElement; 
     const formData = new FormData(form);
-    createRecipe(formData);
+    await createRecipe(formData);
     navigate('/myrecipes');
   };
     return (
       <>
-        <div className="add-recipe-tittle">
-          <h3>ADD Recipe</h3>
+        <div className="form-recipe-tittle">
+          <h3>Tu Receta</h3>
         </div>
         <div className="add-Recipe-form">
           <form onSubmit={handleSubmitRecipe} action="submit">
-            <label htmlFor="recipe-name">1° Como se llama tu plato...</label>
-              <input type="text" name="recipe-name" required/>
+            <label htmlFor="recipeName">1° Como se llama tu plato...</label>
+              <input type="text" id="recipeName" name="recipeName" required/>
             <label htmlFor="ingredients" >2° Que ingredientes lleva...</label>
-            <input type="text" name="ingredients" />
-            <input type="text" name="ingredients" />
-            <input type="text" name="ingredients" />
-            <input type="text" name="ingredients" />
-            <input type="text" name="ingredients" />
-            <input type="text" name="ingredients" />
-            <input type="text" name="ingredients" />
-            <input type="text" name="ingredients" />
-            <input type="text" name="ingredients" />
-            <input type="text" name="ingredients" />
-            <input type="text" name="ingredients" />
+              <input type="text" id="ingredients" name="ingredients" />
+              <input type="text" id="ingredients" name="ingredients" />
+              <input type="text" id="ingredients" name="ingredients" />
+              <input type="text" id="ingredients" name="ingredients" />
+              <input type="text" id="ingredients" name="ingredients" />
+              <input type="text" id="ingredients" name="ingredients" />
+              <input type="text" id="ingredients" name="ingredients" />
+              <input type="text" id="ingredients" name="ingredients" />
+              <input type="text" id="ingredients" name="ingredients" />
+              <input type="text" id="ingredients" name="ingredients" />
+              <input type="text" id="ingredients" name="ingredients" />
               {/* <input type="text" onChange={(e)=> setNewIngredient([...newIngredient,e.target.value])} name="ingredients" />
               <button type="button" name="ingredients" onChange={(e)=>{
                 e.preventDefault();
                 (e.target as HTMLInputElement).value = '';
               }}>Añadir</button>  */}
-            <label htmlFor="description-recipe">3° Cómo se prepara...</label>
-              <input type="text" name="description-recipe" />
-            <label htmlFor="cocking-time">4° Que tardariamos en prepararlo...</label>
-              <input type="number" name="cocking-time" />
+            <label htmlFor="descriptionRecipe">3° Cómo se prepara...</label>
+              <input type="text" id="descriptionRecipe" name="descriptionRecipe" />
+            <label htmlFor="cockingTime">4° Que tardariamos en prepararlo...</label>
+              <input type="number" id="cockingTime" name="cockingTime" />
             <label htmlFor="diets">5° Que tipo de comida es...</label>
               <select name="diets" id="diets">
                 <option selected value="defaultValue" disabled>Selecciona una opcion</option>
