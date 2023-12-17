@@ -1,6 +1,7 @@
 import { recipeStructure } from "../../models/recipe";
 import { useRecipes } from "../../hooks/recipes.hook";
 import './card.my.recipes.scss'
+import { useNavigate } from "react-router-dom";
 
 
 type Props = {
@@ -10,10 +11,12 @@ type Props = {
 export const CardMyRecipes = ({recipe}: Props) => {
 
   const { deleteRecipe } = useRecipes();
+  const navigate = useNavigate();
 
   const handleDelete = () => {
     deleteRecipe(recipe.id);
   }
+
 
   return (
     <div>
@@ -36,7 +39,7 @@ export const CardMyRecipes = ({recipe}: Props) => {
                 width={25}
                 height={25}
                 role='button'
-                // onClick={}
+                onClick={() => navigate(`/form/${recipe.id}`)}
               />
               <img 
                 src="https://res.cloudinary.com/dnhrt9kxh/image/upload/v1702638305/delete-button-svgrepo-com_mxfb0q.svg" 

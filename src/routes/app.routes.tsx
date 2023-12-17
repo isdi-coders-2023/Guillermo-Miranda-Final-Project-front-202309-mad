@@ -32,6 +32,10 @@ export function AppRoutes() {
             path="/form"
             element={<FormRecipePage></FormRecipePage>}
           ></Route>
+          <Route
+            path="/form/:id"
+            element={<FormRecipePage></FormRecipePage>}
+          ></Route>
         </Routes>
       </Suspense>
     </main>

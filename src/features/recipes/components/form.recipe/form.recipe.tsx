@@ -1,18 +1,52 @@
-import { SyntheticEvent } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { SyntheticEvent, useEffect } from "react";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useRecipes } from '../../hooks/recipes.hook'
 import './form.recipe.scss'
+import { recipeStructure } from "../../models/recipe";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../core/store/store";
 
 export default function FormRecipe() {
   const navigate = useNavigate();
-  const { createRecipe } = useRecipes();
+  const { createRecipe, updateRecipe } = useRecipes();
+  const { id } = useParams();
+  const { recipes } = useSelector((state: RootState) => state.recipesState)
   // const [newIngredient, setNewIngredient] = useState(['']);
+
+  useEffect(() => {
+    if (id) {
+      const existingRecipe: recipeStructure = recipes.find((item)=>item.id === id) as recipeStructure;
+      if(!existingRecipe) {
+        navigate('/myrecipes');
+      } else {
+        const form = document.querySelector('.form__form-submit') as HTMLFormElement;
+        (form.elements.namedItem('recipeName') as HTMLInputElement).value = existingRecipe.recipeName;
+        (form.elements.namedItem('ingredients') as HTMLInputElement).value = existingRecipe.ingredients[0];
+        (form.elements.namedItem('ingredients') as HTMLInputElement).value = existingRecipe.ingredients[1];
+        (form.elements.namedItem('ingredients') as HTMLInputElement).value = existingRecipe.ingredients[2];
+        (form.elements.namedItem('ingredients') as HTMLInputElement).value = existingRecipe.ingredients[3];
+        (form.elements.namedItem('ingredients') as HTMLInputElement).value = existingRecipe.ingredients[4];
+        (form.elements.namedItem('ingredients') as HTMLInputElement).value = existingRecipe.ingredients[5];
+        (form.elements.namedItem('ingredients') as HTMLInputElement).value = existingRecipe.ingredients[6];
+        (form.elements.namedItem('ingredients') as HTMLInputElement).value = existingRecipe.ingredients[7];
+        (form.elements.namedItem('ingredients') as HTMLInputElement).value = existingRecipe.ingredients[8];
+        (form.elements.namedItem('descriptionRecipe') as HTMLInputElement).value = existingRecipe.descriptionRecipe;
+        (form.elements.namedItem('diets') as HTMLInputElement).value = existingRecipe.diets;
+        
+      }
+    }
+  }, [id]);
   
   const handleSubmitRecipe = async (event: SyntheticEvent) => {
     event.preventDefault();
     const form = event.target as HTMLFormElement; 
     const formData = new FormData(form);
-    await createRecipe(formData);
+    if(id){
+      await updateRecipe(id,formData);
+    } else {
+      await createRecipe(formData);
+    }
+    
     navigate('/myrecipes');
   };
     return (
@@ -21,7 +55,7 @@ export default function FormRecipe() {
           <h3>Tu Receta</h3>
         </div>
         <div className="form__recipe-form">
-          <form onSubmit={handleSubmitRecipe} action="submit">
+          <form onSubmit={handleSubmitRecipe} action="submit" className="form__form-submit">
             <label htmlFor="recipeName">1° Como se llama tu plato...</label>
               <input type="text" id="recipeName" name="recipeName" required/>
             <label htmlFor="ingredients" >2° Que ingredientes lleva...</label>
