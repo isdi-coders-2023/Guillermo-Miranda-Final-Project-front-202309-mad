@@ -4,6 +4,7 @@ import { recipeStructure } from "../../models/recipe";
 import { CardMyRecipes } from "../card.my.recipes/card.my.recipes";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../core/store/store";
+import './list.my.recipes.scss'
 
 
 

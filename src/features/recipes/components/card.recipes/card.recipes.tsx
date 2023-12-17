@@ -1,4 +1,5 @@
 import { recipeStructure } from "../../models/recipe";
+import './card.recipes.scss'
 
 
 type Props = {
@@ -8,20 +9,18 @@ type Props = {
 export const Card = ({recipe}: Props) => {
 
   return (
-    <div>
-      <div className="card-info-container">
-          <div >
-            <p >{recipe.recipeName}</p>
-          </div>
-          <div >
-            <p >by {recipe.chef.userName}</p>
-          </div>
-          <div >
-            <img src= {recipe.picture.cloudinaryURL}
-            width={200}
-            height={200}
-            /> 
-          </div>
+    <div className="card">
+      <div>
+      <img src= {recipe.picture.cloudinaryURL}
+        width={200}
+        height={200}
+        /> 
+      </div>
+      <div >
+        <p >{recipe.recipeName}</p>
+      </div>
+      <div >
+        <p >by {recipe.chef.userName}</p>
       </div>
     </div>
   );

@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useRecipes } from "../../hooks/recipes.hook";
 import { recipeStructure } from "../../models/recipe";
 import { Card } from "../card.recipes/card.recipes";
+import './list.recipes.scss'
 
 type Props = {
   recipeList: recipeStructure[] | undefined

@@ -1,7 +1,7 @@
 import { SyntheticEvent, useEffect } from "react";
 import { useUsers } from "../../hooks/users.hook"
 import { LoginUser } from "../../models/user";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../core/store/store"
 
@@ -34,17 +34,30 @@ export function Login (){
 
   return(
     <section className="login">
+      <div className="login__title">
+        <p>Accede a tu cuenta</p>
+        <img 
+          src="https://res.cloudinary.com/dnhrt9kxh/image/upload/v1702794561/icon-login_lmywve.png" 
+          alt="login-icon" 
+          width={50}
+          height={50}
+        />
+      </div>
       <form
         onSubmit={handleSubmit}
-        className="login-form"
+        // className="login-form"
         aria-label="form"
       >
-        <label>Email: </label>
-        <input type="email" name="email" placeholder="email" required />
-        <label>Contraseña: </label>
-        <input type="password" name="passwd" placeholder="contraseña" required />
-        <button type="submit">listo</button>
-          
+        <div className="login__inputs">
+          <input className='input' type="email" name="email" placeholder="  email" required />
+          <input className='input' type="password" name="passwd" placeholder="  contraseña" required />
+        </div>
+        <div className="login__buttons">
+          <button type="submit">INICIAR SESION</button>
+          <Link to={'/register'}>
+              <button type="button">REGISTRATE</button>
+          </Link>
+        </div>
       </form>
   </section>
   )

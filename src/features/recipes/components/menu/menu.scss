@@ -1,0 +1,28 @@
+.options{
+  border-radius: 10px;
+  background-color: #1C2C05;
+  ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    li{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .home{
+        margin: 1rem; 
+        border: none;
+        font-family: 'Kameron', serif;
+        background-color: #1C2C05;
+        color: white;
+      }
+      .recipes{
+        margin: 1rem;
+        border: none;
+        font-family: 'Kameron', serif;
+        background-color: #1C2C05;
+        color: white;
+      }
+    }
+  }
+}

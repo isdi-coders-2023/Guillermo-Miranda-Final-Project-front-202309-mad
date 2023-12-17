@@ -1,5 +1,6 @@
 import { recipeStructure } from "../../models/recipe";
 import { useRecipes } from "../../hooks/recipes.hook";
+import './card.my.recipes.scss'
 
 
 type Props = {
@@ -16,34 +17,32 @@ export const CardMyRecipes = ({recipe}: Props) => {
 
   return (
     <div>
-        <div className="card-info-container">
+        <div className="card">
+            <div >
+              <img src= {recipe.picture.cloudinaryURL}
+              width={200}
+              height={200}/> 
+            </div>
             <div >
               <p >{recipe.recipeName}</p>
             </div>
             <div >
               <p >by {recipe.chef.userName}</p>
             </div>
-            <div >
-              <img src= {recipe.picture.cloudinaryURL}
-              width={200}
-              height={200}/> 
-            </div>
-            <div>
+            <div className="card__edit">
               <img 
                 src="https://res.cloudinary.com/dnhrt9kxh/image/upload/v1702638164/pencil-edit-button_rvc0ao.svg" 
                 alt="edit-card" 
-                width={50}
-                height={50}
+                width={25}
+                height={25}
                 role='button'
                 // onClick={}
               />
-            </div>
-            <div>
               <img 
                 src="https://res.cloudinary.com/dnhrt9kxh/image/upload/v1702638305/delete-button-svgrepo-com_mxfb0q.svg" 
                 alt="delete-card" 
-                width={50}
-                height={50}
+                width={25}
+                height={25}
                 role='button'
                 onClick={handleDelete}
               />

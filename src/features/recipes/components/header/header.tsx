@@ -1,17 +1,15 @@
 import { useSelector } from "react-redux"
 import { RootState } from "../../../../core/store/store"
 import { Menu } from "../menu/menu"
+import './header.scss'
 
 export function Header (){
   const {loggedUser}=useSelector((state:RootState)=>state.userState)
   return(
-    <section>
-      {loggedUser && 
-        <>
-          <h1>Bienvenid@ {loggedUser.userName}</h1>
-        </>
-      }
-      <Menu></Menu>
+    <section className="header">
+      <p>FC</p>
+      {loggedUser && <h1>Bienvenid@ {loggedUser.userName}</h1>}
+      <div><Menu></Menu></div>
     </section>
   )
 } 
