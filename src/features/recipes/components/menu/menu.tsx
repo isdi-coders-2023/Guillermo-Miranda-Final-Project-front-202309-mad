@@ -1,10 +1,13 @@
 import { useState } from 'react';
 import './menu.scss'
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../../core/store/store';
 
 
 export function Menu() {
   
+  const { loggedUser }=useSelector((state:RootState)=>state.userState)
   const [isClicked, setIsClicked] = useState(false)
   const handleOptions = () =>{
     setIsClicked(!isClicked)
@@ -30,11 +33,13 @@ export function Menu() {
                 <button className='home'>· H O M E ·</button>
               </Link>
             </li>
+            {loggedUser && (
             <li>
               <Link to="/myrecipes" >
               <button className='recipes'>· R E C E T A R I O ·</button>
               </Link>
             </li>
+            )}
           </ul>
         </div>
       )}

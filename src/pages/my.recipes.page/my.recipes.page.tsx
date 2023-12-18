@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
 import { RootState } from "../../core/store/store";
-import { Header } from "../../features/recipes/components/header/header";
 import { ListMyRecipes } from "../../features/recipes/components/list.my.recipes/list.my.recipes";
 import { AddButton } from "../../features/recipes/components/add.button/add.button";
+import { HomeButton } from "../../features/recipes/components/home.button/home.button";
+import { HeaderPrivate } from "../../features/recipes/components/header.private/header.private";
 
 
 export default function MyRecipesPage() {
@@ -13,9 +14,10 @@ export default function MyRecipesPage() {
 
   return (
     <>
-      <Header></Header>
+      <HeaderPrivate></HeaderPrivate>
       <AddButton></AddButton>
       <ListMyRecipes recipeList={recipes} userID={userID} ></ListMyRecipes>
+      <HomeButton></HomeButton>
     </>
   );
 }
