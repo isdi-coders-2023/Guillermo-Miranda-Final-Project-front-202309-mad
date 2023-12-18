@@ -2,6 +2,7 @@ import { SyntheticEvent, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useUsers } from '../../hooks/users.hook';
 import { UserStructure } from '../../models/user';
+import './register.scss'
 
 export function Register() {
   const [hasRegister, setHasRegister] = useState(false);
@@ -29,35 +30,32 @@ export function Register() {
   };
 
   return (
-    <>
-      <h2>Create your new Account</h2>
-
+    <div className='register'>
+      <h2 className='register__title'>Create tu cuenta</h2>
       {!hasRegister && (
         <form
           onSubmit={handleSubmit}
-          className="register-form"
+          className="register__form"
           aria-label="form"
         >
           <label>Email</label>
           <input type="email" name="email" required />
-          <label>Password</label>
+          <label>Contraseña  </label>
           <input type="password" name="passwd" required />
-          <label>Nombre de usuario</label>
+          <label>Nombre de usuario  </label>
           <input type="text" name="user-name" required />
-          <label>Tu estilo de cocina</label>
+          <label>Tu estilo de cocina  </label>
           <input type="text" name="style-food"/>
-          <label>Tu descripción</label>
+          <label>Tu descripción  </label>
           <input type="text" name="description-user"/>
-          <div className="signup-button">
-            <button type="submit">Apuntate</button>
+          <div className="register__form__buttons">
+            <button type="submit">Listo</button>
+            <Link to={'/'}>
+              <button type="button">Volver</button>
+            </Link>
           </div>
         </form>
       )}
-        <div>
-          <Link to={'/'}>
-            <button type="button">Volver</button>
-          </Link>
-        </div>
-    </>
+    </div>
   );
 }

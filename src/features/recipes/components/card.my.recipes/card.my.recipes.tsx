@@ -1,7 +1,7 @@
 import { recipeStructure } from "../../models/recipe";
 import { useRecipes } from "../../hooks/recipes.hook";
 import './card.my.recipes.scss'
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 type Props = {
@@ -17,15 +17,19 @@ export const CardMyRecipes = ({recipe}: Props) => {
     deleteRecipe(recipe.id);
   }
 
+  const { getOneRecipe } = useRecipes();
+
 
   return (
     <div>
         <div className="card">
-            <div >
+            <Link to={'/details'}>
               <img src= {recipe.picture.cloudinaryURL}
-              width={200}
-              height={200}/> 
-            </div>
+                width={200}
+                height={200}
+                onClick={()=>getOneRecipe(recipe)}
+              /> 
+            </Link>
             <div >
               <p >{recipe.recipeName}</p>
             </div>
@@ -33,14 +37,16 @@ export const CardMyRecipes = ({recipe}: Props) => {
               <p >by {recipe.chef.userName}</p>
             </div>
             <div className="card__edit">
+            <Link to={`/form/${recipe.id}`}>
               <img 
                 src="https://res.cloudinary.com/dnhrt9kxh/image/upload/v1702638164/pencil-edit-button_rvc0ao.svg" 
                 alt="edit-card" 
                 width={25}
                 height={25}
                 role='button'
-                onClick={() => navigate(`/form/${recipe.id}`)}
+                onClick={()=>getOneRecipe(recipe)}
               />
+            </Link>
               <img 
                 src="https://res.cloudinary.com/dnhrt9kxh/image/upload/v1702638305/delete-button-svgrepo-com_mxfb0q.svg" 
                 alt="delete-card" 

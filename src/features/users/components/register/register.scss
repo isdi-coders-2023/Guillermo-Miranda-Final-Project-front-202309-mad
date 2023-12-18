@@ -1,4 +1,4 @@
-.login {
+.register {
   display: flex;
   height: 50vh;
   flex-direction: column;
@@ -10,15 +10,16 @@
     font-size: 30px;
     display: flex;
     align-items: center;
-    margin-bottom: 2rem;
+    margin-top: 5rem;
+    margin-bottom: 1rem;
     p {
       margin: 0;
     }
   }
-  &__inputs{
+  &__form{
     display: flex;
     flex-direction: column;
-    .input{
+    input{
       border: none;
       padding-left: 30px;
       margin-bottom: 2rem;
@@ -28,17 +29,16 @@
         color: white;
       }
     }
-  }
-  
-  &__buttons{
-    button{
-      color: white;
-      background-color: black;
-      border-radius: 10px;
-      font-family: 'Kameron', serif;
-      margin-left: 1rem;
-      margin-right: 1rem;
-    }
-   
+    &__buttons{
+      button{
+        color: white;
+        background-color: black;
+        border-radius: 10px;
+        font-family: 'Kameron', serif;
+        margin-left: 1rem;
+        margin-right: 1rem;
+        margin-bottom: 3rem;
+      }
+    }    
   }
 }

@@ -45,7 +45,6 @@ export function Login (){
       </div>
       <form
         onSubmit={handleSubmit}
-        // className="login-form"
         aria-label="form"
       >
         <div className="login__inputs">
