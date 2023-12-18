@@ -1,7 +1,7 @@
 import { recipeStructure } from "../../models/recipe";
 import { useRecipes } from "../../hooks/recipes.hook";
 import './card.my.recipes.scss'
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 
 type Props = {
@@ -11,7 +11,6 @@ type Props = {
 export const CardMyRecipes = ({recipe}: Props) => {
 
   const { deleteRecipe } = useRecipes();
-  const navigate = useNavigate();
 
   const handleDelete = () => {
     deleteRecipe(recipe.id);
