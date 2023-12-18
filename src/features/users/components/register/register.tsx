@@ -26,8 +26,8 @@ export function Register() {
     register(data);
     setHasRegister(true);
     navigate('/');
-
   };
+
 
   return (
     <div className='register'>
@@ -43,11 +43,11 @@ export function Register() {
           <label>Contraseña  </label>
           <input type="password" name="passwd" required />
           <label>Nombre de usuario  </label>
-          <input type="text" name="user-name" required />
+          <input type="text" name="userName" required />
           <label>Tu estilo de cocina  </label>
-          <input type="text" name="style-food"/>
+          <input type="text" name="styleFood"/>
           <label>Tu descripción  </label>
-          <input type="text" name="description-user"/>
+          <textarea  id="descriptionUser" name="descriptionUser" cols={70} rows={3}></textarea>
           <div className="register__form__buttons">
             <button type="submit">Listo</button>
             <Link to={'/'}>
@@ -55,7 +55,7 @@ export function Register() {
             </Link>
           </div>
         </form>
-      )}
+        )}
     </div>
   );
 }

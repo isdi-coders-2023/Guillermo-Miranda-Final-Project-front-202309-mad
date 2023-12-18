@@ -38,7 +38,7 @@ export const Details = () => {
         </div>   
         <p className="details__info__title">DESCRIPCION</p> 
         <p className="details__info__description">{currentRecipe!.descriptionRecipe}</p>
-        <p >
+        <p className="details__info__time">
           <img 
           src="https://res.cloudinary.com/dnhrt9kxh/image/upload/v1702894502/time-icon_p9ev7y.png" 
           alt="clock"

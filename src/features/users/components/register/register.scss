@@ -29,6 +29,16 @@
         color: white;
       }
     }
+    textarea{
+      border: none;
+      padding-left: 30px;
+      margin-bottom: 2rem;
+      background-color: #A3A4A2;
+      border-radius: 1rem;
+      &::placeholder {
+        color: white;
+      }
+    }
     &__buttons{
       button{
         color: white;
