@@ -23,6 +23,9 @@ export default {
     "/src/features/recipes/models/img.data.ts",
     "/src/features/recipes/models/recipe.ts",
     "/src/core/App/App.tsx",
-    "/src/features/users/slices/users.slice.ts"
+    "/src/features/users/slices/users.slice.ts",
+    "/src/features/recipes/components/form.recipe/form.recipe.tsx",
+    "/src/features/recipes/components/list.my.recipes/list.my.recipes.tsx",
+    "/src/features/recipes/components/recipe.details/recipe.details.tsx"
   ],
 };

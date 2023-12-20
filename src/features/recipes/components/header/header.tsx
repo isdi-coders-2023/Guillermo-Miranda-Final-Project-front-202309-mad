@@ -7,7 +7,7 @@ export function Header (){
   const {loggedUser}=useSelector((state:RootState)=>state.userState)
   return(
     <section className="header">
-      <p>FC</p>
+      <p role="heading">FC</p>
       {loggedUser && <h1>Bienvenid@ {loggedUser.userName}</h1>}
       <div><Menu></Menu></div>
     </section>

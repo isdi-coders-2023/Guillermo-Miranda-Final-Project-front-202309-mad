@@ -16,7 +16,7 @@ export const Details = () => {
         /> 
       </div >
       <div className="details__info">
-        <p className="details__info__name">{currentRecipe!.recipeName}</p>    
+        <p data-testid='paragraph' className="details__info__name">{currentRecipe!.recipeName}</p>    
         <div className="details__info__ingredients">
           <p className="details__info__ingredients__title">INGREDIENTES</p>
           <div className="details__info__ingredients__1">
