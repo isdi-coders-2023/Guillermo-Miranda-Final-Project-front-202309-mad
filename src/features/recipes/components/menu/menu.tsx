@@ -23,13 +23,14 @@ export function Menu() {
         height={50}
         role='button'
         onClick={handleOptions}
+        data-testid="link"
         />
       </i>
       {isClicked === true && (
         <div className='options'>
           <ul>
             <li>
-              <Link to="/home">
+              <Link to="/home" >
                 <button className='home'>· H O M E ·</button>
               </Link>
             </li>

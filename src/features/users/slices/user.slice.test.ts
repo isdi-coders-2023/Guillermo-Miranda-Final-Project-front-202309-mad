@@ -9,11 +9,11 @@ describe('Given userReducer', () => {
     test('Then the new state will be returned ', () => {
       const action = {
         type: 'login/fulfilled',
-        payload: { user: {id: 'Test'}, token: 'token' },
+        payload: { user: 'Test', token: 'token' },
       };
       const state: UserState = {} as unknown as UserState;
       const result = usersReducer(state, action);
-      expect(result.loggedUser?.id).toBe('Test');
+      expect(result.loggedUser).toBe('Test');
       expect(result.token).toBe('token');
 
     })
@@ -30,7 +30,7 @@ describe('Given userReducer', () => {
 
   describe('When users/login/rejected action is dispatch', () => {
     test('Then the new state will be returned ', () => {
-      const action = loginUserThunk.rejected;  // Usa la acción generada por el thunk cuando es rechazado
+      const action = loginUserThunk.rejected; 
       const state: UserState = {} as UserState;
       const result = usersReducer(state, action);
       expect(result.loginState).toBe('error');

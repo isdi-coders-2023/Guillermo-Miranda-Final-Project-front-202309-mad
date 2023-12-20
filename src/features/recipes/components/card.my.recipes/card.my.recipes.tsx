@@ -22,11 +22,13 @@ export const CardMyRecipes = ({recipe}: Props) => {
   return (
     <div>
         <div className="card">
-            <Link to={'/details'}>
-              <img src= {recipe.picture.cloudinaryURL}
+            <Link to={'/details'} data-testid="link">
+              <img 
+                src= {recipe.picture.cloudinaryURL}
                 width={200}
                 height={200}
                 onClick={()=>getOneRecipe(recipe)}
+                role='button'
               /> 
             </Link>
             <div >
@@ -36,7 +38,7 @@ export const CardMyRecipes = ({recipe}: Props) => {
               <p >by {recipe.chef.userName}</p>
             </div>
             <div className="card__edit">
-            <Link to={`/form/${recipe.id}`}>
+            <Link to={`/form/${recipe.id}`} data-testid="link">
               <img 
                 src="https://res.cloudinary.com/dnhrt9kxh/image/upload/v1702638164/pencil-edit-button_rvc0ao.svg" 
                 alt="edit-card" 

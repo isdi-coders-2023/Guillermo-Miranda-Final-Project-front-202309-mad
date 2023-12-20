@@ -4,9 +4,9 @@ import { createRecipeThunk, deleteRecipeThunk, loadRecipesThunk, loadUserRecipes
 
 
 
-type statusRecipeState = 'idle' | 'loading' | 'error';
+export type statusRecipeState = 'idle' | 'loading' | 'error';
 
-type RecipesState = {
+export type RecipesState = {
   recipes: recipeStructure[];
   currentRecipe: recipeStructure | null;
   statusRecipeState: statusRecipeState;
@@ -34,6 +34,7 @@ const recipesSlice = createSlice({
       builder.addCase(loadUserRecipesThunk.fulfilled, 
         (state: RecipesState, {payload}: PayloadAction<recipeStructure[]>) => {
           state.recipes = payload
+          state.statusRecipeState = 'idle'
         });
 
       builder.addCase(loadUserRecipesThunk.pending, 
@@ -49,6 +50,7 @@ const recipesSlice = createSlice({
       builder.addCase(loadRecipesThunk.fulfilled, 
         (state: RecipesState, {payload}: PayloadAction<recipeStructure[]>) => {
           state.recipes = payload
+          state.statusRecipeState = 'idle'
         });
 
       builder.addCase(loadRecipesThunk.pending, 

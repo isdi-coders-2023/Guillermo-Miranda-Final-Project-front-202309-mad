@@ -11,17 +11,16 @@ type Props = {
 export const Card = ({recipe}: Props) => {
   const { getOneRecipe } = useRecipes();
 
-  
-
-
   return (
     <div className="card">
       <div>
-        <Link to={'/details'}>
-          <img src= {recipe.picture.cloudinaryURL}
+        <Link to={'/details'} data-testid="link">
+          <img 
+            src= {recipe.picture.cloudinaryURL}
             width={200}
             height={200}
             onClick={()=>getOneRecipe(recipe)}
+            role="image"
           /> 
         </Link>
       </div>

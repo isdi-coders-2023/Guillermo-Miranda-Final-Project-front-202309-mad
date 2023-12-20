@@ -17,10 +17,10 @@ export function Register() {
         .value,
       passwd: (formElement.elements.namedItem('passwd') as HTMLInputElement)
         .value,
-      userName: (formElement.elements.namedItem('user-name') as HTMLInputElement).value,
-      styleFood: (formElement.elements.namedItem('style-food') as HTMLInputElement)
+      userName: (formElement.elements.namedItem('userName') as HTMLInputElement).value,
+      styleFood: (formElement.elements.namedItem('styleFood') as HTMLInputElement)
         .value,
-      descriptionUser: (formElement.elements.namedItem('description-user') as HTMLInputElement)
+      descriptionUser: (formElement.elements.namedItem('descriptionUser') as HTMLInputElement)
         .value,
     } as Partial<UserStructure>;
     register(data);
