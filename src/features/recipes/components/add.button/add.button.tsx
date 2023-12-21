@@ -10,7 +10,6 @@ export const AddButton = () => {
             alt="add-card" 
             width={50}
             height={50}
-            role='button'
           />
       </Link>
     </div>
