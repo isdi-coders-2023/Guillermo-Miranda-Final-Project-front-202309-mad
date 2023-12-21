@@ -29,6 +29,7 @@ export const CardMyRecipes = ({recipe}: Props) => {
                 height={200}
                 onClick={()=>getOneRecipe(recipe)}
                 role='button'
+                alt="food recipe"
               /> 
             </Link>
             <div >
