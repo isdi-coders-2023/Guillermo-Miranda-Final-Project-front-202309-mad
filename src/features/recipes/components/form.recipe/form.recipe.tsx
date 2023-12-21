@@ -11,7 +11,7 @@ export default function FormRecipe() {
   const { createRecipe, updateRecipe } = useRecipes();
   const { id } = useParams();
   const { recipes, currentRecipe } = useSelector((state: RootState) => state.recipesState)
-  // const [newIngredient, setNewIngredient] = useState(['']);
+
 
   useEffect(() => {
     if (id) {
@@ -78,11 +78,6 @@ export default function FormRecipe() {
               defaultValue={id?currentRecipe?.ingredients[7]:''}/>
               <input type="text" id="ingredients" name="ingredients" placeholder="  9." 
               defaultValue={id?currentRecipe?.ingredients[8]:''}/>
-              {/* <input type="text" onChange={(e)=> setNewIngredient([...newIngredient,e.target.value])} name="ingredients" />
-              <button type="button" name="ingredients" onChange={(e)=>{
-                e.preventDefault();
-                (e.target as HTMLInputElement).value = '';
-              }}>Añadir</button>  */}
             <label htmlFor="descriptionRecipe">3° Cómo se prepara...</label>
               <textarea  id="descriptionRecipe" name="descriptionRecipe" cols={70} rows={10}></textarea>
             <label htmlFor="cockingTime">4° Que tardariamos en prepararlo...</label>

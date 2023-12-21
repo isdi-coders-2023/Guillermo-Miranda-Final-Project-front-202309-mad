@@ -38,15 +38,15 @@ export function Register() {
           className="register__form"
           aria-label="form"
         >
-          <label>Email</label>
+          <label htmlFor='email'>Email</label>
           <input type="email" name="email" required />
-          <label>Contraseña  </label>
+          <label htmlFor='passwd'>Contraseña  </label>
           <input type="password" name="passwd" required />
-          <label>Nombre de usuario  </label>
+          <label htmlFor='userName'>Nombre de usuario  </label>
           <input type="text" name="userName" required />
-          <label>Tu estilo de cocina  </label>
+          <label htmlFor='styleFood'>Tu estilo de cocina  </label>
           <input type="text" name="styleFood"/>
-          <label>Tu descripción  </label>
+          <label htmlFor='descriptionUser'>Tu descripción  </label>
           <textarea  id="descriptionUser" name="descriptionUser" cols={70} rows={3}></textarea>
           <div className="register__form__buttons">
             <button type="submit">Listo</button>
