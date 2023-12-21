@@ -4,12 +4,12 @@ import { Details } from "../../features/recipes/components/recipe.details/recipe
 
 export default function SessionPage() {
   return (
-    <>
+
       <section>
       <Header></Header>
       <Details></Details>  
       <HomeButton></HomeButton>  
     </section>
-    </>
+    
   );
 }

@@ -11,6 +11,7 @@ export const Details = () => {
     <div className="details">
       <div>
         <img src= {currentRecipe!.picture.cloudinaryURL}
+          alt="food recipe"
           width={500}
           height={500}
         /> 

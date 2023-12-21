@@ -23,12 +23,12 @@ export function ListMyRecipes({userID,recipeList}: Props) {
   },[]);
 
   return (
-    <>
+    
       <ul className="recipes-list">
         {recipeList?.map((item: recipeStructure) => (
           <CardMyRecipes key={item.id} recipe={item}></CardMyRecipes>
         ))}
       </ul>
-    </>
+    
   );
 }

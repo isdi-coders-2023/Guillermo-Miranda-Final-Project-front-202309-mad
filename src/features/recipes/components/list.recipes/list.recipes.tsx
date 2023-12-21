@@ -15,12 +15,12 @@ export function List({recipeList}: Props) {
   },[]);
 
   return (
-    <>
+  
       <ul className="recipes-list">
         {recipeList?.map((item: recipeStructure) => (
           <Card key={item.id} recipe={item}></Card>
         ))}
       </ul>
-    </>
+    
   );
 }

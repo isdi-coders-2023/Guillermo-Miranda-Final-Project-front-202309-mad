@@ -10,7 +10,6 @@ export const HomeButton = () => {
             alt="home-button" 
             width={80}
             height={80}
-            role='button'
           />
       </Link>
     </div>

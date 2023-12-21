@@ -15,13 +15,12 @@ export function Menu() {
 
   return (
     <>
-      <i role="i">
+      <i>
         <img 
         src="https://res.cloudinary.com/dnhrt9kxh/image/upload/v1702633040/fuzdw3cmbhsufwcvvuaj.png" 
         alt="image menu hamburguer" 
         width={50}
         height={50}
-        role='button'
         onClick={handleOptions}
         data-testid="link"
         />

@@ -3,7 +3,8 @@ import { RootState } from "../../core/store/store";
 import { ListMyRecipes } from "../../features/recipes/components/list.my.recipes/list.my.recipes";
 import { AddButton } from "../../features/recipes/components/add.button/add.button";
 import { HomeButton } from "../../features/recipes/components/home.button/home.button";
-import { HeaderPrivate } from "../../features/recipes/components/header.private/header.private";
+import { Header } from "../../features/recipes/components/header/header";
+
 
 
 export default function MyRecipesPage() {
@@ -14,7 +15,7 @@ export default function MyRecipesPage() {
 
   return (
     <>
-      <HeaderPrivate></HeaderPrivate>
+      <Header></Header>
       <AddButton></AddButton>
       <ListMyRecipes recipeList={recipes} userID={userID} ></ListMyRecipes>
       <HomeButton></HomeButton>
