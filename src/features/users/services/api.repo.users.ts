@@ -23,7 +23,6 @@ export class ApiRepoUserStructures {
     if (!response.ok)
     throw new Error(response.status + ' ' + response.statusText);
   return response.json();
-
   }
 
   async registerUser(newUserStructure: Partial<UserStructure>): Promise<UserStructure> {
